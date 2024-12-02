@@ -12,6 +12,8 @@ import { ops } from './helpers/routines.js'
 import { showAlertsList } from './helpers/showAlertsList.js'
 import { state } from './state.js'
 import introJs from 'intro.js/intro.js';
+import { messages } from './libs/services/messages.js';
+const currentLang = 'fr';
 
 
 
@@ -178,12 +180,26 @@ loader.importLibrary('maps')
 
 
         // TODO: Loop over all TempretureCard#html() and attach these functions to events
-        LIS.id('startover').onclick = ops.emptyIt
-        LIS.id('comparision-items').ondrop = (event) => ops.drop(event)
-        LIS.id('comparision-items').ondragover = (event) => ops.allowDrop(event)
-        LIS.id('intro').onclick = () => introJs().start()
-        // LIS.id('themeSwitch').onclick = (ev) => ops.themeSwitch()
-    })
+        // Attach events
+    LIS.id('startover').onclick = ops.emptyIt;
+    LIS.id('comparision-items').ondrop = (event) => ops.drop(event);
+    LIS.id('comparision-items').ondragover = (event) => ops.allowDrop(event);
+
+    LIS.id('intro').onclick = () => {
+        const intro = introJs();
+        intro.setOptions({
+            steps: [
+                { intro: messages.tour[currentLang].map },
+                { element: '#location', intro: messages.tour[currentLang].cards },
+                { element: '#comparision-items', intro: messages.tour[currentLang].comparision },
+                { element: '#imgGrid', intro: messages.tour[currentLang].gallery },
+            ],
+            showProgress: true,
+            scrollToElement: true,
+        });
+        intro.start();
+    };
+});
 
 // TODO: deprecated !
 loader.load().then((google) => {
