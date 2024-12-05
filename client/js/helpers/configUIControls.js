@@ -33,7 +33,6 @@ loader.importLibrary('core')
             localStorage.getItem('darkSwitch') !== null && localStorage.getItem('darkSwitch') === 'dark'
         toggle ? ops.styleItWhite() : ops.styleItDark()
     })
-
     // Slider
     const slider = LIS.id('formControlRange')
     const sliderForm = LIS.id('formControlRange0')
