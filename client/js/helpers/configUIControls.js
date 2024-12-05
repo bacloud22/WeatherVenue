@@ -22,17 +22,48 @@ loader.importLibrary('core')
             _ControlPosition = ControlPosition;
         })
 
- export const configUIControls = () => {
-    // First time visit: style map night or regular based on earlier preferences
-    const darkThemeSelected =
-        localStorage.getItem('darkSwitch') !== null && localStorage.getItem('darkSwitch') === 'dark'
-    darkThemeSelected ? ops.styleItDark() : ops.styleItWhite()
-    // Define on toggle behavior.
-    state.google.maps.event.addDomListener(LIS.id('darkSwitch'), 'click', function () {
-        const toggle =
-            localStorage.getItem('darkSwitch') !== null && localStorage.getItem('darkSwitch') === 'dark'
-        toggle ? ops.styleItWhite() : ops.styleItDark()
-    })
+// Dark Mode Handling
+export const configUIControls = () => {
+    // Check and apply dark mode preference from localStorage
+    const isDarkModeEnabled = localStorage.getItem('darkSwitch') === 'dark';
+    if (isDarkModeEnabled) enableDarkMode();
+    else enableLightMode();
+
+    // Event listener for toggling dark mode
+    const darkModeToggle = LIS.id('darkSwitch');
+    if (darkModeToggle) {
+        state.google.maps.event.addDomListener(darkModeToggle, 'click', () => {
+            const isCurrentlyDark = localStorage.getItem('darkSwitch') === 'dark';
+            if (isCurrentlyDark) enableLightMode();
+            else enableDarkMode();
+        });
+    }
+};
+
+// Enable Dark Mode
+function enableDarkMode() {
+    // Apply dark mode styles to Google Map
+    ops.styleItDark();
+
+    // Apply dark mode styling to Bootstrap elements
+    document.body.classList.add('bootstrap-dark');
+
+    // Save preference in localStorage
+    localStorage.setItem('darkSwitch', 'dark');
+}
+
+// Enable Light Mode
+function enableLightMode() {
+    // Apply light mode styles to Google Map
+    ops.styleItWhite();
+
+    // Revert Bootstrap elements to light mode
+    document.body.classList.remove('bootstrap-dark');
+
+    // Save preference in localStorage
+    localStorage.setItem('darkSwitch', 'light');
+
+
     // Slider
     const slider = LIS.id('formControlRange')
     const sliderForm = LIS.id('formControlRange0')
