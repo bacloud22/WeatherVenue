@@ -143,7 +143,7 @@ html {
     position: relative;
   }
   
-  
+
   [data-theme="dark"] .bg-light {
     background-color: #92A5FD !important;
   }

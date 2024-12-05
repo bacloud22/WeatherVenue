@@ -9,8 +9,7 @@
   %>
 </head>
 
-<body>
-  
+<body>  
   <div id="spinner-back"></div>
   <div id="spinner-front">
     <img src="/images/loading.gif" /><br>
