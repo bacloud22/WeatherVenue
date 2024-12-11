@@ -3,7 +3,7 @@
 
 
 # THIS IS BROKE. TO BE UPDATED WITH LATEST VERSION OF MASTER (INSTALLATION, GULP NOT INVOLVED etc...)
-name: CI
+
 
 # on:
 #   push:
@@ -11,49 +11,65 @@ name: CI
 #   pull_request:
 #     branches: [ master ]
 
+name: CI - Cypress UI Tests
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+    branches: [master]
+
 env:
-    NODE_ENV: dev
-    PORT: 3000
-    REDIS_PORT: 6379
-    OPENWEATHERMAP_API_KEY:  ${{ secrets.OPENWEATHERMAP_API_KEY }}
-    GOOGLE_MAPS_API_KEY:  ${{ secrets.GOOGLE_MAPS_API_KEY }}
+  NODE_ENV: dev
+  PORT: 3000
+  REDIS_PORT: 6379
+  OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
+  GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+
 jobs:
   cypress-ui-test:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.x, 17.x]
+        node-version: [16.x, 18.x] # Update to currently supported Node.js versions
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: gulp compress_js
-    - name: Install redis
-      run: sudo apt-get install -y redis-tools redis-server
-    - name: Verify that redis is up
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Project
+      run: npm run build
+
+    - name: Install Redis
+      run: sudo apt-get update && sudo apt-get install -y redis-tools redis-server
+
+    - name: Verify Redis is Running
       run: redis-cli ping
-    - name: Run tests in chrome
-      uses: cypress-io/github-action@v2
+
+    - name: Run Cypress Tests in Chrome
+      uses: cypress-io/github-action@v4
       with:
         wait-on: 'http://localhost:3000'
-        wait-on-timeout: 20
+        wait-on-timeout: 60
         record: false
         start: npm start
         browser: chrome
 
-    - name: Run tests in Firefox
-      uses: cypress-io/github-action@v2
+    - name: Run Cypress Tests in Firefox
+      uses: cypress-io/github-action@v4
       with:
         wait-on: 'http://localhost:3000'
-        wait-on-timeout: 20
+        wait-on-timeout: 60
         record: false
         start: npm start
         browser: firefox
