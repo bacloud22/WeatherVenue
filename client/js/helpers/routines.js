@@ -206,7 +206,9 @@ function pSBC(p, c0, c1, l) {
 
 var cardsColors
 ops['styleItDark'] = () => {
-    document.documentElement.style.backgroundColor = '#111'
+    const htmlElement = document.documentElement;
+    htmlElement.setAttribute('data-bs-theme', 'dark');
+
     state.map.setOptions({ styles: styles.night })
     LIS.id('copyright_google').src = '/images/powered_by_google_on_non_white_hdpi.png'
     if (!cardsColors) {
@@ -221,10 +223,14 @@ ops['styleItDark'] = () => {
     })
 
     LIS.id('logo').src = '/images/weather_venue_856-8_on_black.png'
+
+    localStorage.setItem('darkSwitch', 'dark')
 }
 
 ops['styleItWhite'] = () => {
-    document.documentElement.style.backgroundColor = '#eee'
+    const htmlElement = document.documentElement;
+    htmlElement.setAttribute('data-bs-theme', 'light');
+
     state.map.setOptions({ styles: styles.hide })
     LIS.id('copyright_google').src = '/images/powered_by_google_on_white_hdpi.png'
     if (cardsColors) {
@@ -233,6 +239,7 @@ ops['styleItWhite'] = () => {
         })
     }
     LIS.id('logo').src = '/images/weather_venue_856-8.png'
+    localStorage.setItem('darkSwitch', null)
 }
 
 ops['showLoading'] = () => {
@@ -247,7 +254,11 @@ ops['hideLoading'] = () => {
 
 ops['setWithExpiry'] = (key, value) => {
     const now = new Date()
-    const day = { day: now.getDay(), month: now.getMonth(), year: now.getFullYear() }
+    const day = {
+        day: now.getDay(),
+        month: now.getMonth(),
+        year: now.getFullYear()
+    }
 
     // `item` is an object which contains the original value
     // as well as today's date

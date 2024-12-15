@@ -20,7 +20,7 @@ const citiesIds = JSON.parse(rawdata)
 // })
 const OPENWEATHERMAP_API_KEY = process.env.OPENWEATHERMAP_API_KEY
 
-function getCityId (coord) {
+function getCityId(coord) {
   // return undefined;
   const toPrecision = x => Number.parseFloat(x).toPrecision(3)
   coord.lon = toPrecision(coord.lon)
@@ -38,7 +38,7 @@ function getCityId (coord) {
   }
 }
 
-async function fetchWeather0 (westLng, northLat, eastLng, southLat, mapZoom) {
+async function fetchWeather0(westLng, northLat, eastLng, southLat, mapZoom) {
   return new Promise(async (resolve, reject) => {
     const openWeatherMapAPI = `https://api.openweathermap.org/data/2.5/box/city?bbox=${westLng},${northLat},${eastLng},${southLat},${mapZoom}&cluster=yes&format=json&APPID=${OPENWEATHERMAP_API_KEY}`
     // const body0 = await api({ url: openWeatherMapAPI, method: 'get' })
@@ -47,7 +47,7 @@ async function fetchWeather0 (westLng, northLat, eastLng, southLat, mapZoom) {
   })
 }
 
-async function fetchWeather (city, language) {
+async function fetchWeather(city, language) {
   return new Promise(async (resolve, reject) => {
     const APIUrlWeather = `https://api.openweathermap.org/data/3.0/onecall?lat=${city.latitude}&lon=${city.longitude}&lang=${language}&exclude=hourly,minutely&units=metric&appid=${OPENWEATHERMAP_API_KEY}`
     // const body0 = await api({ url: APIUrlWeather, method: 'get' })
@@ -63,7 +63,7 @@ async function fetchWeather (city, language) {
   })
 }
 
-function formatCities (cities, weathers, pollutions) {
+function formatCities(cities, weathers, pollutions) {
   const newVar = {
     type: 'FeatureCollection',
     features: [],
@@ -136,6 +136,26 @@ const messages = {
       cards: '"Vous pouvez glisser des cartes vers la zone de comparaison. Les cartes colorées reflètent la température maximale et minimale en une journée. Cliquez sur min-max pour simplifier visuellement les comparaisons."',
       comparision: '"Dans la zone de comparaison Vous pouvez voir des cartes de différents jours et de différentes villes aussi. Pour les appareils Android et sur Google Chrome uniquement, vous pouvez également partager n importe quelle carte avec d autres personnes."',
       gallery: '"Une belle galerie locale de photos de la ville principale."'
+    }
+  },
+  index: {
+    en: {
+      explanatory: 'Find the best places to visit near you; for warmer winter holidays or cool summer getaways.',
+      location: 'Enter your city to get the forecast',
+      comparision: 'Weather comparison',
+      gallery: 'Local images of the main city will appear below'
+    },
+    ar: {
+      explanatory: 'ابحث عن أفضل الأماكن التي يمكنك زيارتها في محيطك؛ لقضاء عطلات الشتاء الدافئة أو عطلات الصيف الباردة.',
+      location: 'أدخل مدينتك للحصول على التوقعات',
+      comparision: 'مقارنة الطقس',
+      gallery: 'ستظهر الصور المحلية للمدينة الرئيسية أدناه'
+    },
+    fr: {
+      explanatory: 'Retrouver les meilleurs endroits à visiter dans votre entourage ; Pour des vacances hivernales plus chaudes ou des escapades estivales fraîches.',
+      location: 'Entrer votre ville pour avoir les prévisions',
+      comparision: 'Comparaison météo',
+      gallery: 'Des images locales de la ville principale apparaîtront ci-dessous'
     }
   }
 }

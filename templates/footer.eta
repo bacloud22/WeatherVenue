@@ -1,4 +1,4 @@
-<nav class="navbar sticky-bottom navbar-light bg-light">
+<nav class="navbar sticky-bottom">
     <div class="container-fluid">
       <img id="copyright_google" src='/images/powered_by_google_on_white_hdpi.png' alt="Powered by Google">
       <a class="text-dark" href="https://Openweathermap.org/"> & Openweathermap.org</a>

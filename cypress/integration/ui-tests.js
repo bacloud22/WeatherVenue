@@ -104,14 +104,14 @@ describe('Sanity', function () {
 
 describe('Nav', function () {
   function click_nav_bar_on_mobile () {
-    cy.get('body > nav.navbar.navbar-expand-lg.navbar-light.bg-light.py-0 > button').click()
+    cy.get('body > nav.navbar.navbar-expand-lg.py-0 > button').click()
   }
 
   function functionalities (is_mobile) {
     cy.visit(BASE_URL)
     cy.get('#exampleModal2').should('not.be.visible')
     if (is_mobile) { click_nav_bar_on_mobile() }
-    cy.get('#navbarNav > ul.navbar-nav.mr-auto > li:nth-child(1) > a').click()
+    cy.get('#navbar > ul.navbar-nav > li:nth-child(1) > a').click()
     cy.get('#exampleModal2').should('be.visible')
   }
   it('Functionalities-Desktop', () => {
@@ -201,7 +201,7 @@ describe('Nav', function () {
       click_nav_bar_on_mobile()
     }
     cy.get('#exampleModal').should('not.be.visible')
-    cy.get('#navbarNav > ul.navbar-nav.mr-auto > li:nth-child(6) > a').click()
+    cy.get('#navbar > ul.navbar-nav > li:nth-child(6) > a').click()
     cy.get('#exampleModal').should('be.visible')
   }
 

@@ -1,118 +1,114 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
-    <a class="navbar-brand" href="/">
-      <img id='logo' src="/images/weather_venue_856-8.png" alt="weathervenue.com" width="100" alt="weathervenue" class="d-inline-block align-middle mr-2">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">&#8203;</span>
-    </button>
+<nav class="navbar navbar-expand-lg bd-navbar">
+  <a class="navbar-brand" href="/">
+    <img id='logo' src="/images/weather_venue_856-8.png" alt="weathervenue.com" width="100" alt="weathervenue" class="d-inline-block align-middle mr-2">
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">&#8203;</span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-target="#exampleModal2">Functionalities</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" id="intro">Tour</a>
-        </li>
-        <!-- <li class="nav-item">
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Functionalities</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="intro">Tour</a>
+      </li>
+      <!-- <li class="nav-item">
           <a class="nav-link" href="#">Donate</a>
         </li> -->
-        <li class="nav-item inactive">
-          <a class="nav-link disabled" href="#">Version 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-target="#exampleModal">Disclaimer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href='mailto:&#098;&#097;&#099;&#108;&#111;&#117;&#100;&#049;&#052;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=About&nbsp;WeatherVenue'>Contact us</a>
-        </li>
-		    <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Languages
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="<%= arRoute %>">عربية</a>
-            <a class="dropdown-item" href="<%= frRoute %>">Français</a>
-          </div>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item btn btn-light" id="fullscreen">
-          Full Screen
-        </li>
-        <li class="nav-link">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="darkSwitch" />
-            <label id="dark_mode_toggle" class="custom-control-label" for="darkSwitch">Dark Mode</label>
-          </div>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Disclaimer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href='mailto:&#098;&#097;&#099;&#108;&#111;&#117;&#100;&#049;&#052;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=About&nbsp;WeatherVenue'>Contact us</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Languages
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="<%= arRoute %>">عربية</a>
+          <a class="dropdown-item" href="<%= frRoute %>">Français</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item btn btn-light" id="fullscreen">
+        Full Screen
+      </li>
+      <li class="nav-link">
+        <div class="custom-control custom-switch">
+          <% /* disabled until someone fixes dark mode style */ %>
+          <input type="checkbox" class="custom-control-input" id="darkSwitch" disabled />
+          <label id="dark_mode_toggle" class="custom-control-label" for="darkSwitch">Dark Mode</label>
+        </div>
+      </li>
 
-        <li class="nav-link">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="accessibilitySwitch" />
-            <label id="accessibility_toggle" class="custom-control-label" for="accessibilitySwitch">Accessibility</label>
-          </div>
-        </li>
-      </ul>
-      </ul>
-    </div>
+      <li class="nav-link">
+        <div class="custom-control custom-switch">
+          <% /* disabled until someone fixes accessibility funcitonality */ %>
+          <input type="checkbox" class="custom-control-input" id="accessibilitySwitch" disabled/>
+          <label id="accessibility_toggle" class="custom-control-label" for="accessibilitySwitch">Accessibility</label>
+        </div>
+      </li>
+    </ul>
+    </ul>
+  </div>
 </nav>
 
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">A "no responsibility" disclaimer</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          No warranties whatsoever! The service can go down without any alert. We take no responsibility for anything
-          beyond our control.
-          The website can hit usage limits for services like Openweathermap.org and Google maps and goes off. Please
-          note also that this website relies fully on data provided by other weather services like Openweathermap.org.
-          This means forecast can be inaccurate or incomplete. The website can be buggy including UI rendering and
-          data consistency.
-          The service does not gather or use any user information in any way.
-          We use Google Analytics however which tracks and reports website traffic based on cookies that store anonymous information. The only cache is "searched cities"
-          for faster responses;
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Functionalities</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title">A "no responsibility" disclaimer</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <p> I  would like to welcome you; Enjoy your next trip!
+        No warranties whatsoever! The service can go down without any alert. We take no responsibility for anything
+        beyond our control.
+        The website can hit usage limits for services like Openweathermap.org and Google maps and goes off. Please
+        note also that this website relies fully on data provided by other weather services like Openweathermap.org.
+        This means forecast can be inaccurate or incomplete. The website can be buggy including UI rendering and
+        data consistency.
+        The service does not gather or use any user information in any way.
+        We use Google Analytics however which tracks and reports website traffic based on cookies that store anonymous information. The only cache is "searched cities"
+        for faster responses;
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Functionalities</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> I would like to welcome you; Enjoy your next trip!
           The main functionality of WeatherVenue is city look-up which show next 8 days weather forecast.
           On desktop only (not compatible with phones), you can enjoy more rich interactions with the map. </p>
-          <!-- <ul class="categories-list">
+        <!-- <ul class="categories-list">
             <li>You can right click on two markers to get Google Maps directions.</li>
             <li>You can also drag and drop weather cards for multiple cities in one view and compare them.</li>
             <li>This website offers a speech/voice accessibility option. It only runs on recent versions of Chrome however.</li>
           </ul> -->
-          <p>a) You can right click on two markers to get Google Maps directions.</p>
-          <p>b) You can also drag and drop weather cards for multiple cities in one view and compare them.</p>
-          <p>c) This website offers a speech/voice accessibility option. However it only runs on recent versions of Chrome.</p>
+        <p>a) You can right click on two markers to get Google Maps directions.</p>
+        <p>b) You can also drag and drop weather cards for multiple cities in one view and compare them.</p>
+        <p>c) This website offers a speech/voice accessibility option. However it only runs on recent versions of Chrome.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

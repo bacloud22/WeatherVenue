@@ -1,5 +1,5 @@
 <form id="formControlRange0" style="background-color: #2a2a3c79; color: #fff;">
-    <div class="form-group">
+    <div>
       <input type="range" class="form-control-range" id="formControlRange" min="1" max="8" step="1" value="1">
       <span id="rangeval">Day 1</span>
     </div>
@@ -16,6 +16,6 @@
   
   </div>
   <div class="map_wrapper" id="stick" >
-    <div id="map" style="width: 100%; height: 100%; " data-intro=<%= messages.tour[lang].map %> data-position="auto"></div>
+    <div id="map" style="width: 100%; height: 100%; " data-intro='<%= messages.tour[lang].map %>' data-position="auto"></div>
   </div>
   <!-- <script type="text/javascript" src="https://unpkg.com/stickybits@latest/dist/stickybits.min.js" rel="javascript"></script> -->

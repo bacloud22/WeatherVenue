@@ -5,9 +5,10 @@ import isMobile from "./isMobile.js";
 import { populateHeatMap } from "./populateHeatMap.js";
 import { conf, ops } from "./routines.js";
 import { Loader } from "@googlemaps/js-api-loader";
+import screenfull from 'screenfull';
 
 // const client = new Client({});
-function __class (cls) { return document.getElementsByClassName(cls) }
+function __class(cls) { return document.getElementsByClassName(cls) }
 // Instantiate new UI controls for DOM page or Google map. Configure UI controls or retrieve present UI controls when they exist.
 
 const loader = new Loader({
@@ -18,12 +19,15 @@ const loader = new Loader({
 
 let _ControlPosition;
 loader.importLibrary('core')
-        .then(async ({ControlPosition}) => {
-            _ControlPosition = ControlPosition;
-        })
+    .then(async ({ ControlPosition }) => {
+        _ControlPosition = ControlPosition;
+    })
 
- export const configUIControls = () => {
+export const configUIControls = () => {
     // First time visit: style map night or regular based on earlier preferences
+    // TODO: force light mode until fixing dark mode
+    localStorage.setItem('darkSwitch', null)
+
     const darkThemeSelected =
         localStorage.getItem('darkSwitch') !== null && localStorage.getItem('darkSwitch') === 'dark'
     darkThemeSelected ? ops.styleItDark() : ops.styleItWhite()
@@ -47,7 +51,7 @@ loader.importLibrary('core')
         moving = populateHeatMap(slider.value - 1)
         if (!moving) {
             slider.value = 1
-            LIS.id('rangeval').innerHTML = day-1
+            LIS.id('rangeval').innerHTML = day - 1
         }
     }
 
@@ -63,7 +67,7 @@ loader.importLibrary('core')
         input = LIS.id('pac-input')
     }
     if (!state.autocomplete) {
-        
+
         state.autocomplete = new state.google.maps.places.Autocomplete(input, conf.autocompleteOptions)
         state.map.controls[_ControlPosition.TOP_CENTER].clear()
         state.map.controls[_ControlPosition.TOP_CENTER].push(input)
@@ -97,7 +101,7 @@ loader.importLibrary('core')
                         lng: position.coords.longitude,
                     }
                     infoWindow.setPosition(pos)
-                    infoWindow.setContent(location-found)
+                    infoWindow.setContent(location - found)
                     infoWindow.open(state.map)
                     state.map.setCenter(pos)
                     pos.name = 'current-place'
@@ -114,6 +118,18 @@ loader.importLibrary('core')
             handleLocationError(false, infoWindow, state.map.getCenter())
         }
     })
+
+    const fullScreenBtn = LIS.id('fullscreen');
+    fullScreenBtn.addEventListener('click', () => {
+        if (screenfull.isEnabled) {
+            screenfull.request();
+        } else {
+            // Ignore or do something else
+        }
+    });
+    screenfull.on('change', () => {
+        screenfull.isFullscreen ? fullScreenBtn.style.visibility = "hidden" : fullScreenBtn.style.visibility = "visible";
+    });
 }
 
 // When browser doesn't support Geolocation
