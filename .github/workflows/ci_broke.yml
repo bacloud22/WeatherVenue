@@ -1,5 +1,6 @@
 # Workflow to install Node.js dependencies, build the app, and run Cypress tests.
 name: CI - Cypress UI Tests
+
 on:
   push:
     branches: [master, dev]
@@ -20,47 +21,48 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x, 18.x]
+        browser: [chrome, firefox]
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: npm
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Build Project
-      run: npm run build
+      - name: Build Project
+        run: npm run build
 
-    - name: Start Redis
-      run: |
-        sudo systemctl start redis-server
-        sudo systemctl status redis-server --no-pager
+      - name: Start Redis
+        run: |
+          sudo systemctl start redis-server
+          sudo systemctl status redis-server --no-pager
 
-    - name: Verify Redis is Running
-      run: redis-cli ping
+      - name: Verify Redis is Running
+        run: redis-cli ping
 
-    - name: Start Application
-      run: npm start &
-      env:
-        NODE_ENV: dev
-        PORT: 3000
-        REDIS_PORT: 6379
-        OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
-        GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+      - name: Start Application
+        run: npm start &
+        env:
+          NODE_ENV: dev
+          PORT: 3000
+          REDIS_PORT: 6379
+          OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
-    - name: Wait for Application to Start
-      run: sleep 10
+      - name: Wait for Application to Start
+        run: sleep 10
 
-    - name: Run Cypress Tests
-      uses: cypress-io/github-action@v4
-      with:
-        wait-on: 'http://localhost:3000'
-        wait-on-timeout: 120
-        record: false
-        browser: chrome, firefox
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v4
+        with:
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+          record: false
+          browser: ${{ matrix.browser }}
