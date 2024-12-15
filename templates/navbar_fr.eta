@@ -1,16 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+<nav class="navbar navbar-expand-lg py-0">
   <a class="navbar-brand" href="/">
     <img id='logo' src="/images/weather_venue_856-8.png" alt="weathervenue.com" width="100" alt="weathervenue" class="d-inline-block align-middle mr-2">
   </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon">&#8203;</span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav me-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-target="#exampleModal2">Fonctionnalités</a>
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Fonctionnalités</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" id="intro">Demo</a>
@@ -19,11 +18,8 @@
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Donate</a>
       </li> -->
-      <li class="nav-item inactive">
-        <a class="nav-link disabled" href="#">Version 2</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-target="#exampleModal">Conditions</a>
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Conditions</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href='mailto:&#098;&#097;&#099;&#108;&#111;&#117;&#100;&#049;&#052;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=About&nbsp;WeatherVenue'>Nous contacter</a>
@@ -44,7 +40,8 @@
       </li>
       <li class="nav-link">
         <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+          <% /* disabled until someone fixes dark mode style */ %>
+          <input type="checkbox" class="custom-control-input" id="darkSwitch" disabled />
           <label class="custom-control-label" for="darkSwitch">Mode sombre</label>
         </div>
       </li>
@@ -53,49 +50,47 @@
   </div>
 </nav>
 
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Non-responsabilité!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         Aucune garantie! Le service peut s'arrêter sans prévenir. Nous n'assumons aucune responsabilité pour quoi que ce soit
-         au-delà de notre contrôle.
-         Le site Web peut atteindre les limites d'utilisation de services tels que Openweathermap.org et Google Maps et s'éteint.
-         Notez également que ce site Web repose entièrement sur les données fournies par d'autres services météorologiques comme Openweathermap.org.
-         Cela signifie que les prévisions peuvent être inexactes ou incomplètes. Le site Web peut ne pas fonctionner correctement, y compris l'affichage de l'interface utilisateur et
-         la cohérence des données.
-         Le service ne recueille et n'utilise aucune information des utilisateurs de quelque manière que ce so
-         Nous utilisons cependant Google Analytics qui suit et rapporte le trafic du site Web en se basant sur les cookies qui stockent des informations anonymes. Le seul cache est "les villes recherchées"
-         pour des réponses plus rapides;
+        au-delà de notre contrôle.
+        Le site Web peut atteindre les limites d'utilisation de services tels que Openweathermap.org et Google Maps et s'éteint.
+        Notez également que ce site Web repose entièrement sur les données fournies par d'autres services météorologiques comme Openweathermap.org.
+        Cela signifie que les prévisions peuvent être inexactes ou incomplètes. Le site Web peut ne pas fonctionner correctement, y compris l'affichage de l'interface utilisateur et
+        la cohérence des données.
+        Le service ne recueille et n'utilise aucune information des utilisateurs de quelque manière que ce so
+        Nous utilisons cependant Google Analytics qui suit et rapporte le trafic du site Web en se basant sur les cookies qui stockent des informations anonymes. Le seul cache est "les villes recherchées"
+        pour des réponses plus rapides;
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Fonctionnalités</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Fonctionnalités</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
         <p> Je voudrais vous souhaiter la bienvenue; Profitez de votre prochain voyage!
           La fonctionnalité principale de WeatherVenue est la recherche de la ville qui affiche les prévisions météorologiques pour les 8 prochains jours.
-          Sur le bureau seulement (non compatible avec les téléphones), vous pouvez profiter d'interactions plus riches avec la carte.  </p>
+          Sur le bureau seulement (non compatible avec les téléphones), vous pouvez profiter d'interactions plus riches avec la carte. </p>
         <!-- <ul class="categories-list">
           <li>You can right click on two markers to get Google Maps directions.</li>
           <li>You can also drag and drop weather cards for multiple cities in one view and compare them.</li>
@@ -103,10 +98,10 @@ aria-hidden="true">
         </ul> -->
         <p>a) Vous pouvez faire un clic droit sur deux marqueurs pour obtenir les directions Google Maps.</p>
         <p>b) Vous pouvez également faire glisser et déposer des cartes météo pour plusieurs villes dans une seule vue et les comparer.</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
     </div>
   </div>
-</div>
 </div>

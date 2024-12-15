@@ -1,31 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+<nav class="navbar navbar-expand-lg py-0">
   <a class="navbar-brand" href="/">
-      <img id='logo' src="/images/weather_venue_856-8.png" alt="weathervenue.com" width="100" alt="weathervenue" class="d-inline-block align-middle mr-2">
+    <img id='logo' src="/images/weather_venue_856-8.png" alt="weathervenue.com" width="100" alt="weathervenue" class="d-inline-block align-middle mr-2">
   </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">&#8203;</span>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">&#8203;</span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav ms-auto">
       <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-target="#exampleModal2">خدمات</a>
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">خدمات</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#" id="intro">جولة</a>
+        <a class="nav-link" href="#" id="intro">جولة</a>
       </li>
       <!-- <li class="nav-item">
           <a class="nav-link" href="#">تبرع للموقع</a>
       </li> -->
-      <li class="nav-item inactive">
-          <a class="nav-link disabled" href="#">الاصدار 2</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">مسؤولية الخدمة</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-target="#exampleModal">مسؤولية الخدمة</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href='mailto:&#098;&#097;&#099;&#108;&#111;&#117;&#100;&#049;&#052;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=About&nbsp;WeatherVenue'>اتصل بنا</a>
+        <a class="nav-link" href='mailto:&#098;&#097;&#099;&#108;&#111;&#117;&#100;&#049;&#052;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=About&nbsp;WeatherVenue'>اتصل بنا</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,73 +35,72 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item btn btn-light" id="fullscreen">
-          وضع ملء الشاشة
+        وضع ملء الشاشة
       </li>
       <li class="nav-link">
-          <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+        <div class="custom-control custom-switch">
+          <% /* disabled until someone fixes dark mode style */ %>
+          <input type="checkbox" class="custom-control-input" id="darkSwitch" disabled />
           <label class="custom-control-label" for="darkSwitch">الحلة المظلمة</label>
-          </div>
+        </div>
       </li>
-      </ul>
-      </ul>
+    </ul>
+    </ul>
   </div>
-  </nav>
+</nav>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-content">
       <div class="modal-header">
-          <h5 class="modal-title">عدم المسؤولية</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title">عدم المسؤولية</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-          </button>
+        </button>
       </div>
       <div class="modal-body">
-          لا توجد ضمانات على الإطلاق! يمكن أن تسحب  الخدمة دون أي تنبيه. نحن لا نتحمل أي مسؤولية عن أي شيء
-          خارج عن سيطرتنا.
-          يمكن أن يصل موقعنا إلى حدود الاستفادة من خدمات Openweathermap.org وخرائط Google ويختفي.
-          لاحظ أيضًا أن هذا الموقع يعتمد بشكل كامل على البيانات المقدمة من خدمات الطقس الأخرى مثل Openweathermap.org.
-          هذا يعني أن التبآت المناخية يمكن أن تكون غير دقيقة أو غير كاملة. يمكن أن يحتوي موقع الويب على أخطاء عرض واجهة المستخدم أيضا.
-          لا تقوم الخدمة بجمع أو استخدام أي معلومات مستخدم بأي شكل من الأشكال.
-          نحن نستخدم Google Analytics رغم  ذلك ، والذي يتتبع ويبلغ عن زيارات موقع الويب بناءً على ملفات تعريف الارتباط التي لا تخزن إلا معلومات مجهولة المصدر.
-          التخزين المؤقت و الوحيد هو "المدن التي تم البحث عنها مسبقا"
-          يمكن جمع زيارات المستخدمين بشكل مشتت و لا تربط أبدا بمعلومات تشخص الزوار مثل عدد الزيارات لبعض الصفحات لغرض الحصول على تجربة أفضل.
+        لا توجد ضمانات على الإطلاق! يمكن أن تسحب الخدمة دون أي تنبيه. نحن لا نتحمل أي مسؤولية عن أي شيء
+        خارج عن سيطرتنا.
+        يمكن أن يصل موقعنا إلى حدود الاستفادة من خدمات Openweathermap.org وخرائط Google ويختفي.
+        لاحظ أيضًا أن هذا الموقع يعتمد بشكل كامل على البيانات المقدمة من خدمات الطقس الأخرى مثل Openweathermap.org.
+        هذا يعني أن التبآت المناخية يمكن أن تكون غير دقيقة أو غير كاملة. يمكن أن يحتوي موقع الويب على أخطاء عرض واجهة المستخدم أيضا.
+        لا تقوم الخدمة بجمع أو استخدام أي معلومات مستخدم بأي شكل من الأشكال.
+        نحن نستخدم Google Analytics رغم ذلك ، والذي يتتبع ويبلغ عن زيارات موقع الويب بناءً على ملفات تعريف الارتباط التي لا تخزن إلا معلومات مجهولة المصدر.
+        التخزين المؤقت و الوحيد هو "المدن التي تم البحث عنها مسبقا"
+        يمكن جمع زيارات المستخدمين بشكل مشتت و لا تربط أبدا بمعلومات تشخص الزوار مثل عدد الزيارات لبعض الصفحات لغرض الحصول على تجربة أفضل.
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">غلق</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">غلق</button>
       </div>
-      </div>
+    </div>
   </div>
-  </div>
+</div>
 
-  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-content">
       <div class="modal-header">
-          <h5 class="modal-title"> خدمات الموقع</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title"> خدمات الموقع</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-          </button>
+        </button>
       </div>
       <div class="modal-body">
-          <p> أود أن أرحب بك. استمتع برحلتك المستقبلية!
-              الخدمة الرئيسية لـ WeatherVenue هي البحث عن أي مدينة و الذي يعرض توقعات الطقس في الأيام الثمانية القادمة.
-              باستخدامك لالكمبيوتر (غير متوافق إجماليا مع الهواتف) ، يمكنك الاستمتاع بتفاعلات أكثر ثراءً مع الخريطة. </p>
-          <!-- <ul class="categories-list">
+        <p> أود أن أرحب بك. استمتع برحلتك المستقبلية!
+          الخدمة الرئيسية لـ WeatherVenue هي البحث عن أي مدينة و الذي يعرض توقعات الطقس في الأيام الثمانية القادمة.
+          باستخدامك لالكمبيوتر (غير متوافق إجماليا مع الهواتف) ، يمكنك الاستمتاع بتفاعلات أكثر ثراءً مع الخريطة. </p>
+        <!-- <ul class="categories-list">
               <li>You can right click on two markers to get Google Maps directions.</li>
               <li>You can also drag and drop weather cards for multiple cities in one view and compare them.</li>
               <li>This website offers a speech/voice accessibility option. It only runs on recent versions of Chrome however.</li>
           </ul> -->
-          <p> يمكنك النقر بزر الماوس الأيمن على علامتين للحصول على اتجاهات خرائط Google.</p>
-          <p> يمكنك أيضًا سحب وإسقاط بطاقات الطقس لمدن متعددة في عرض واحد ومقارنتها.</p>
+        <p> يمكنك النقر بزر الماوس الأيمن على علامتين للحصول على اتجاهات خرائط Google.</p>
+        <p> يمكنك أيضًا سحب وإسقاط بطاقات الطقس لمدن متعددة في عرض واحد ومقارنتها.</p>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">غلق</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">غلق</button>
       </div>
-      </div>
+    </div>
   </div>
 </div>

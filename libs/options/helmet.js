@@ -19,6 +19,8 @@ export default {
                 'https://*.ggpht.com',
                 '*.googleusercontent.com',
                 'unpkg.com',
+                'https://*.googletagmanager.com',
+                'https://*.cookiebot.com'
             ],
             'script-src-attr': ["'unsafe-inline'"],
             'img-src': [
@@ -28,15 +30,25 @@ export default {
                 '*.google.com',
                 '*.googleusercontent.com',
                 'openweathermap.org',
+                'https://*.google-analytics.com',
+                'https://*.googletagmanager.com',
                 'data:',
             ],
-            'frame-src': ['*.google.com'],
+            'frame-src': [
+                '*.google.com',
+                'https://*.cookiebot.com'
+            ],
             'connect-src': [
                 "'self'",
                 'https://*.googleapis.com',
                 '*.google.com',
                 'https://*.gstatic.com',
+                'https://*.google-analytics.com',
+                'https://*.analytics.google.com',
+                'https://*.googletagmanager.com',
+                'https://*.cookiebot.com',
                 'data: blob:',
+
             ],
             'font-src': ['https://fonts.gstatic.com', 'cdn.jsdelivr.net'],
             'style-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net', 'https://fonts.googleapis.com', 'unpkg.com'],

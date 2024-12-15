@@ -17,12 +17,12 @@
   </div>
   <%~ includeFile('navbar', { lang: lang }); %>
   <div class="container-fluid">
-  <h3 class="text-center" id="explanatory-text">Retrouver les meilleurs endroits à visiter dans votre entourage ; Pour des vacances hivernales plus chaudes ou des escapades estivales fraîches.</h3>
+  <h3 class="text-center" id="explanatory-text"><%= messages.index[lang].explanatory %></h3>
   </div>
   <%~ includeFile('map', { command: 'Enter a location', messages: messages, lang: lang }); %>
 
-  <div class="container-fluid" data-intro=<%= messages.tour[lang].cards %> data-position="auto">
-    <h3 class="sectionHead" id="location">Entrer votre ville pour avoir les prévisions</h3>
+  <div class="container-fluid" data-intro='<%= messages.tour[lang].cards %>' data-position="auto">
+    <h3 class="sectionHead" id="location"><%= messages.index[lang].location %></h3>
     <p id="date"></p>
     <div class="row text-center" id="minibar1">
       <button id="collapse1" type="button" aria-label="collapse" class="btn btn-light" data-bs-toggle="collapse" href="#forecast-items">
@@ -36,8 +36,8 @@
     <div class="row collapse show" id="forecast-items"></div>
   </div>
 
-  <div class="container-fluid" data-intro=<%= messages.tour[lang].comparision %> data-position="auto">
-    <h3 class="sectionHead">Comparaison météo</h3>
+  <div class="container-fluid" data-intro='<%= messages.tour[lang].comparision %>' data-position="auto">
+    <h3 class="sectionHead"><%= messages.index[lang].comparision %></h3>
     <div class="row text-center" id="minibar2">
       <button id="collapse2" type="button" aria-label="collapse" class="btn btn-light" data-bs-toggle="collapse" href="#comparision-items">
         <i class="bi bi-arrows-collapse">&#8203;</i>
@@ -50,8 +50,8 @@
     </div>
   </div>
 
-  <h3 class="sectionHead" id="gallery">Des images locales de la ville principale apparaîtront ci-dessous</h3>
-  <div id="imgGrid" data-intro=<%= messages.tour[lang].gallery %> data-position="auto">
+  <h3 class="sectionHead" id="gallery"><%= messages.index[lang].gallery %></h3>
+  <div id="imgGrid" data-intro='<%= messages.tour[lang].gallery %>' data-position="auto">
 
   </div>
   <%~ includeFile('footer', it); %>

@@ -1,28 +1,27 @@
 html {
     height: 100%;
-    background-color: #E5EAF5 !important;
   }
   
-  html[data-theme='dark'] {
+  /* html[data-theme='dark'] {
     background-color: #2a2a3c !important;
-  }
+  } */
   
   body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #E5EAF5;
+    /* background-color: #E5EAF5; */
     position: sticky
   }
   
-  body[data-theme="dark"] {
+  /* body[data-theme="dark"] {
     background-color: #212B38;
-  }
+  } */
   
   
   .controls {
-    background-color: #fff;
+    /* background-color: #fff; */
     border-radius: 2px;
     border: 1px solid transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -61,7 +60,7 @@ html {
     top: 10%;
     left: 0%;
     z-index: -6;
-    background-color: rgba(212, 0, 0, 0.664);
+    background-color: rgba(212, 0, 0, 0.301);
     /* padding: 5px; */
     border: 1px solid #999;
     text-align: center;
@@ -143,7 +142,7 @@ html {
     position: relative;
   }
   
-  
+/*   
   [data-theme="dark"] .bg-light {
     background-color: #92A5FD !important;
   }
@@ -186,7 +185,7 @@ html {
   [data-theme='dark'] #xp_posts {
     background-color: #c3c1f4;
     border-radius: 5px;
-  }
+  } */
   
   
   #cta_share_travelXp {
@@ -195,9 +194,9 @@ html {
     border: none;
   }
   
-  #navbarNav [data-theme='dark'] {
+  /* #navbar [data-theme='dark'] {
     color:rgb(255, 255, 255);
-  }
+  } */
   
   #imgGrid{
     display: flex;
@@ -277,11 +276,6 @@ html {
   
   .navbar-brand {
     font-size: x-large;
-    color: #92A5FD;
-  }
-  
-  #navbarNav {
-    color: #92A5FD;
   }
   
   .custom-control-label {
