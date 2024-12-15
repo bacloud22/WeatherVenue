@@ -3,7 +3,7 @@
 
 <head>
   <%~ includeFile('head',
-      { version: 'bootstrap' , centerLocation: 'london' , lang: lang , title: 'Bienvenue',
+      { lang: lang , title: 'Bienvenue',
         description: 'WeatherVenue vous permet de trouver les meilleurs endroits à visiter dans votre entourage ; Trouvez facilement des vacances d\'hiver plus chaudes ou des escapades estivales fraîches.',
       });
   %>

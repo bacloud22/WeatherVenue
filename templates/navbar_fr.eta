@@ -14,10 +14,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#" id="intro">Demo</a>
       </li>
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Donate</a>
-      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Conditions</a>
       </li>
@@ -32,6 +28,14 @@
           <a class="dropdown-item" href="<%= enRoute %>">English</a>
           <a class="dropdown-item" href="<%= arRoute %>">عربية</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/big_map">météo d'aujourd'hui
+        <span class="badge bg-info text-dark">nouveau</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://elbordj.com">Elbordj.com
+        <span class="badge bg-info text-dark">nouveau</span></a>
       </li>
     </ul>
     <ul class="navbar-nav">
