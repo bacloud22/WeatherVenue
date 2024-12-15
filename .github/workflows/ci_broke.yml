@@ -1,6 +1,5 @@
 # Workflow to install Node.js dependencies, build the app, and run Cypress tests.
 name: CI - Cypress UI Tests
-
 on:
   push:
     branches: [master, dev]
