@@ -8,7 +8,6 @@ async function routes(fastify, options) {
     const { redis } = fastify
     fastify.get('/', { helmet: googleHelmet }, function (req, reply) {
         reply.view('./index', {
-            key: process.env.GOOGLE_MAPS_API_KEY,
             lang: 'en',
             messages: messages,
         })
@@ -16,7 +15,6 @@ async function routes(fastify, options) {
 
     fastify.get('/fr', { helmet: googleHelmet }, function (req, reply) {
         reply.view('./index', {
-            key: process.env.GOOGLE_MAPS_API_KEY,
             lang: 'fr',
             messages: messages,
         })
@@ -24,30 +22,26 @@ async function routes(fastify, options) {
 
     fastify.get('/ar', { helmet: googleHelmet }, function (req, reply) {
         reply.view('./index', {
-            key: process.env.GOOGLE_MAPS_API_KEY,
             lang: 'ar',
             messages: messages,
         })
     })
 
-    fastify.get('/weatherMap/:url', async function (req, reply) {
-        if (!req.params.url) {
-            return res.status(400).send({
-                error: true,
-                message: 'Bad request',
-                data: 'Bad request',
-            })
-        }
-        const urlParams = JSON.parse(req.params.url)
-        let westLng, northLat, eastLng, southLat, mapZoom
-            ; ({ westLng, northLat, eastLng, southLat, mapZoom } = urlParams)
-        const action = fetchWeather0(westLng, northLat, eastLng, southLat, mapZoom)
-        Promise.resolve(action).then(function (response) {
-            return res.status(200).send({
-                error: false,
-                message: 'Weather data for weather map',
-                data: response.data,
-            })
+    fastify.get('/big_map', { helmet: googleHelmet }, function (req, reply) {
+        reply.view('./big_map_index', {
+            lang: 'en',
+            messages: messages,
+        })
+    })
+
+    fastify.get('/big_weather_map', async function (req, reply) {
+        const { westLng, northLat, eastLng, southLat, mapZoom } = req.query;
+        const response = await fetchWeather0(westLng, northLat, eastLng, southLat, mapZoom);
+        
+        return reply.send({
+            error: false,
+            message: 'Weather data for weather map',
+            data: response.data,
         })
     })
 
@@ -58,53 +52,53 @@ async function routes(fastify, options) {
         .prop('cityname', S.string().minLength(3).maxLength(180).required())
         .prop('language', S.string().minLength(2).maxLength(2).required())
 
-        fastify.get('/nearby', async function (req, reply) {
-            const { language, lat, lng } = req.query;
-        
-            const query = {
-                latitude: lat,
-                longitude: lng,
-            };
-        
-            // Fetch nearby cities
-            const cities = nearestCities(query, 10);
+    fastify.get('/nearby', async function (req, reply) {
+        const { language, lat, lng } = req.query;
 
-            const cityDataPromises = cities.map(async (city) => {
-                const cacheKey = `wv:city:${city.name}`;
-                let cityData = await redis.get(cacheKey);
-                if (!cityData) {
-                    // Fetch city weather and cache it
-                    const weatherData = await fetchWeather(city, language);
-                    cityData = {
-                        city,
-                        weather: weatherData.weather,
-                        pollution: weatherData.pollution,
-                    };
-                    await redis.setex(cacheKey, 24 * 60 * 60, JSON.stringify(cityData)); // Cache for 24 hours
-                } else {
-                    cityData = JSON.parse(cityData);
-                }
-                
-                return cityData;
-            });
-        
-            // Resolve all city data promises
-            const allCityData = await Promise.all(cityDataPromises);
-            
-            // Format and return the results
-            const result = formatCities(
-                allCityData.map((data) => data.city),
-                allCityData.map((data) => data.weather),
-                allCityData.map((data) => data.pollution)
-            );
+        const query = {
+            latitude: lat,
+            longitude: lng,
+        };
 
-            return reply.send({
-                error: false,
-                message: 'Weather data for nearby cities fetched and cached by city',
-                data: result,
-            });
-        })
-    };
-        
+        // Fetch nearby cities
+        const cities = nearestCities(query, 10);
+
+        const cityDataPromises = cities.map(async (city) => {
+            const cacheKey = `wv:city:${city.name}`;
+            let cityData = await redis.get(cacheKey);
+            if (!cityData) {
+                // Fetch city weather and cache it
+                const weatherData = await fetchWeather(city, language);
+                cityData = {
+                    city,
+                    weather: weatherData.weather,
+                    pollution: weatherData.pollution,
+                };
+                await redis.setex(cacheKey, 24 * 60 * 60, JSON.stringify(cityData)); // Cache for 24 hours
+            } else {
+                cityData = JSON.parse(cityData);
+            }
+
+            return cityData;
+        });
+
+        // Resolve all city data promises
+        const allCityData = await Promise.all(cityDataPromises);
+
+        // Format and return the results
+        const result = formatCities(
+            allCityData.map((data) => data.city),
+            allCityData.map((data) => data.weather),
+            allCityData.map((data) => data.pollution)
+        );
+
+        return reply.send({
+            error: false,
+            message: 'Weather data for nearby cities fetched and cached by city',
+            data: result,
+        });
+    })
+};
+
 
 export default routes

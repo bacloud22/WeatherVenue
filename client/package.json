@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Not a standalone client. It only generates client scripts and styles that are served publicly",
   "source": [
-    "js/weathervenue.js"
+    "js/weathervenue.js",
+    "js/bigMapWv.js"
   ],
   "targets": {
     "default": {

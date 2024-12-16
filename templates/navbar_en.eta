@@ -14,9 +14,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#" id="intro">Tour</a>
       </li>
-      <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Donate</a>
-        </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Disclaimer</a>
       </li>
@@ -31,6 +28,14 @@
           <a class="dropdown-item" href="<%= arRoute %>">عربية</a>
           <a class="dropdown-item" href="<%= frRoute %>">Français</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/big_map">Today's weather
+        <span class="badge bg-info text-dark">new</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://elbordj.com">Elbordj.com
+        <span class="badge bg-info text-dark">new</span></a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -48,7 +53,7 @@
       <li class="nav-link">
         <div class="custom-control custom-switch">
           <% /* disabled until someone fixes accessibility funcitonality */ %>
-          <input type="checkbox" class="custom-control-input" id="accessibilitySwitch" disabled/>
+          <input type="checkbox" class="custom-control-input" id="accessibilitySwitch" disabled />
           <label id="accessibility_toggle" class="custom-control-label" for="accessibilitySwitch">Accessibility</label>
         </div>
       </li>

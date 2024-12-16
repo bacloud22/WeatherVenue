@@ -3,7 +3,7 @@
 // that could change with a new city search or other user interactions
 let currentResponse = { isValid: false }
 let currentMarked
-let map, heatmap
+let map, heatmap, map2
 let markers = []
 let autocomplete
 let language = 'en'
@@ -21,6 +21,7 @@ export const state = {
     currentResponse,
     currentMarked,
     map,
+    map2,
     heatmap,
     googleLib,
     google,
