@@ -1,4 +1,4 @@
-# Workflow to install Node.js dependencies, build the app, and run Cypress tests.
+# Workflow to install dependencies, build the app, and run Cypress tests.
 name: CI - Cypress UI Tests
 
 on:
@@ -11,8 +11,6 @@ env:
   NODE_ENV: dev
   PORT: 3000
   REDIS_PORT: 6379
-  OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
-  GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
 jobs:
   cypress-ui-test:
@@ -39,6 +37,9 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Install Redis Tools
+        run: sudo apt-get update && sudo apt-get install -y redis-tools
+
       - name: Start Redis
         run: |
           sudo systemctl start redis-server
@@ -53,16 +54,16 @@ jobs:
           NODE_ENV: dev
           PORT: 3000
           REDIS_PORT: 6379
-          OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
-          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          CYPRESS_OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
+          CYPRESS_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
       - name: Wait for Application to Start
-        run: sleep 10
+        run: npx wait-on http://localhost:3000
 
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v4
         with:
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          record: false
           browser: ${{ matrix.browser }}
+          record: false
+          wait-on: http://localhost:3000
+          wait-on-timeout: 120
